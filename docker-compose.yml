@@ -2,10 +2,18 @@ services:
   postgres:
     image: postgres
     environment:
-    - POSTGRES_PASSWORD=Hall100%leaf
+      - POSTGRES_PASSWORD=Hall100%leaf
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
-volumes:
-  pgdata:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-data:/var/lib/mongodb/data
